@@ -25,30 +25,6 @@ export FUSEKI_BASE=$(dirname $(pwd))/target/run
 
 [ ! -d $WORKFLOW ] && mkdir -p $WORKFLOW
 
-[ ! -d $WORKFLOW/artifacts ] && mkdir -p $WORKFLOW/artifacts
-
-export RUBYLIB=$TOOLS/lib/Application:\
-$TOOLS/lib/Audit:\
-$TOOLS/lib/IMCE:\
-$TOOLS/lib/Jena:\
-$TOOLS/lib/Makefile:\
-$TOOLS/lib/OWLAPI:\
-$TOOLS/lib/OntologyBundles:\
-$TOOLS/lib/Pellet:\
-$TOOLS/lib/ruby-jena:\
-$TOOLS/lib/ruby-owlapi:\
-$TOOLS/lib/ruby-pellet:\
-$TOOLS/lib/JGraphT:\
-$TOOLS/lib/OMFMetadata
-
-[ -z "$GEM_HOME" ] && echo "GEM_HOME environment not set!"
-# && exit -1
-
-[ -z "$JRUBY" ] && export JRUBY=$(which jruby)
-echo "# JRUBY=$JRUBY"
-
-export GEM_PATH="${GEM_HOME}:$(dirname $(pwd))"
-
 export PARALLEL_MAKE_OPTS="-j8 -l16"
 
 export JENA_DATASET="imce-ontologies"
