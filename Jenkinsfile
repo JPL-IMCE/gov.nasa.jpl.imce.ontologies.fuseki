@@ -25,9 +25,6 @@ pipeline {
 		}
 
 		stage('Start Fuseki') {
-			when {
-				expression { params.VALIDATE_ONTOLOGIES == 'TRUE' }
-			}
 			steps {
 				echo "Validating ontologies and loading into Fuseki..."
 
