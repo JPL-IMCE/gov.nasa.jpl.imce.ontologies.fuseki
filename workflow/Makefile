@@ -10,7 +10,7 @@
 #    All rights reserved.
 #
 
-FUSEKI_PID ?= $(WORKFLOW)/log/fuseki.pid
+FUSEKI_PID ?= $(WORKFLOW)/fuseki.pid
 FUSEKI_LOG ?= $(WORKFLOW)/log/fuseki.log
 FUSEKI_CONFIG ?= $(WORKFLOW_SOURCES)/etc/fuseki
 
@@ -42,7 +42,5 @@ start-fuseki: $(WORKFLOW)/log $(FUSEKI_BASE)
 	cp -pv $(ETC)/fuseki/imce-ontologies.ttl $(FUSEKI_BASE)/config.ttl
 	(cd $(FUSEKI_BASE); nohup $(FUSEKI_HOME)/fuseki-server --port=$(JENA_PORT) > $(FUSEKI_LOG) 2>&1 & echo $$! > $(FUSEKI_PID) )
 
-#(cd $(FUSEKI_BASE); nohup $(FUSEKI_HOME)/fuseki-server --port=$(JENA_PORT) --config=$(FUSEKI_BASE)/configuration/imce-ontologies.ttl > $(FUSEKI_LOG) 2>&1 & echo $$! > $(FUSEKI_PID) )
-
 stop-fuseki:
-	[ -f $(FUSEKI_PID) ] && kill -9 `cat $(FUSEKI_PID)` 
+	[ -f $(FUSEKI_PID) ] && kill `cat $(FUSEKI_PID)` && rm $(FUSEKI_PID)
