@@ -43,7 +43,6 @@ tdb:GraphTDB    rdfs:subClassOf  ja:Model .
 
 <#tdb_imce_ontologies> rdf:type      tdb:DatasetTDB ;
     tdb:location "imce-ontologies.tdb" ;
-##     # Query timeout on this dataset (milliseconds)
-##     ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "1000" ] ;
-##     # Default graph for query is the (read-only) union of all named graphs.
-     .
+    # Default graph for query is the (read-only) union of all named graphs.
+    tdb:unionDefaultGraph true ;
+    .
